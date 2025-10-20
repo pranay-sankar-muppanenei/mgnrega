@@ -15,7 +15,7 @@ const Dashboard = () => {
   useEffect(() => {
     setIsListLoading(true);
 // ✅ Correct way for Vite (using a Vite-compatible name)
-fetch(`${import.meta.env.VITE_REACT_API_URL}/api/districts`)
+fetch(`${import.meta.env.VITE_API_URL}/api/districts`)
       .then(res => res.json())
       .then(data => {
         setDistrictsList(data);
