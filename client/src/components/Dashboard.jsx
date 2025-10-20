@@ -35,7 +35,7 @@ fetch(`${import.meta.env.VITE_API_URL}/api/districts`)
     if (district) {
       setPerformanceData(null); 
       setIsLoading(true); 
-      fetch(`${import.meta.env.VITE_REACT_APP_API_URL}/api/district/${district}/performance`)
+      fetch(`${import.meta.env.VITE_API_URL}/api/district/${district}/performance`)
         .then(res => res.json())
         .then(data => {
           setPerformanceData(data);
