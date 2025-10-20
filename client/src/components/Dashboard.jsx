@@ -10,12 +10,12 @@ const Dashboard = () => {
   const [isLoading, setIsLoading] = useState(false); // Performance data loading state
   const [districtsList, setDistrictsList] = useState([]); // List of districts
   const [isListLoading, setIsListLoading] = useState(true); // District list loading state
-
+        const API_URL = import.meta.env.VITE_API_URL || "";
   // Effect 1: Fetch the list of districts for the selector (MOVED HERE)
   useEffect(() => {
     setIsListLoading(true);
 // ✅ Correct way for Vite (using a Vite-compatible name)
-fetch(`${import.meta.env.VITE_API_URL}/api/districts`)
+fetch(`${API_URL}/api/districts`)
       .then(res => res.json())
       .then(data => {
         setDistrictsList(data);
@@ -35,7 +35,8 @@ fetch(`${import.meta.env.VITE_API_URL}/api/districts`)
     if (district) {
       setPerformanceData(null); 
       setIsLoading(true); 
-      fetch(`${import.meta.env.VITE_API_URL}/api/district/${district}/performance`)
+
+      fetch(`${API_URL}/api/district/${district}/performance`)
         .then(res => res.json())
         .then(data => {
           setPerformanceData(data);
