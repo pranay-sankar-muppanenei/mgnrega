@@ -14,7 +14,8 @@ const Dashboard = () => {
   // Effect 1: Fetch the list of districts for the selector (MOVED HERE)
   useEffect(() => {
     setIsListLoading(true);
-    fetch(`http://localhost:5000/api/districts`) 
+// ✅ Correct way for Vite (using a Vite-compatible name)
+fetch(`${import.meta.env.VITE_REACT_APP_API_URL}/api/districts`)
       .then(res => res.json())
       .then(data => {
         setDistrictsList(data);
@@ -34,8 +35,7 @@ const Dashboard = () => {
     if (district) {
       setPerformanceData(null); 
       setIsLoading(true); 
-
-      fetch(`http://localhost:5000/api/district/${district}/performance`)
+      fetch(`${import.meta.env.VITE_REACT_APP_API_URL}/api/district/${district}/performance`)
         .then(res => res.json())
         .then(data => {
           setPerformanceData(data);
